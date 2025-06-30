@@ -5,15 +5,13 @@ import Image from 'next/image';
 import type { VideoDetail, VideoResponse } from '@/types/video';
 import { getFullPath } from '@/lib/utils/get-full-path';
 import ReactPlayer from 'react-player/lazy';
-// import dynamic from 'next/dynamic';
-// const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 import { ThumbsUp, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useIsAuthenticated } from '@/lib/hooks/useIsAuthenticated';
 import { api } from '@/lib/api/fetcher';
 import { API_ENDPOINTS } from '@/lib/api/end-points';
-import { RelatedVideoItemOnPlayer } from '@/components/video/item-video';
+import { RelatedVideoItemOnPlayer } from '@/components/video/RelatedVideoItemOnPlayer';
 import { useRouter } from 'next/navigation';
 
 export default function VideoClient({
@@ -37,10 +35,10 @@ export default function VideoClient({
         setIsPlaying(false);
     };
     const handlePlay = () => {
-        // If user presses play again after video ends, hide overlay
         setShowOverlay(false);
         setIsPlaying(true);
     };
+
     useEffect(() => {
         if (rawAuth) setIsAuthenticated(true);
     }, [rawAuth]);
@@ -87,7 +85,7 @@ export default function VideoClient({
                 <div className="relative aspect-video w-full mb-4 overflow-hidden rounded-lg">
                     <ReactPlayer
                         ref={playerRef}
-                        // key={retryKey}
+                        key={video.id}
                         url={getFullPath(video.path)}
                         width="100%"
                         height="100%"
@@ -95,11 +93,6 @@ export default function VideoClient({
                         controls
                         muted
                         className="absolute top-0 left-0"
-                        // onError={(e) => {
-                        //     console.warn('Retrying video load...');
-                        //     console.error('Video load error:', e);
-                        //     setTimeout(() => setRetryKey((k) => k + 1), 500);
-                        // }}
                         onEnded={handleVideoEnd}
                         onPlay={handlePlay}
                     />

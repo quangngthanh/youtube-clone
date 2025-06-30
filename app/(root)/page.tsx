@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { apiGet } from '@/lib/api/fetcher';
 import { API_ENDPOINTS } from '@/lib/api/end-points';
-import VideoList from '@/components/video/list-video';
+import VideoList from '@/components/video/VideoList';
 import type { VideoResponse } from '@/types/video'; 
 import type { VideoListParams, ApiResponse } from '@/types/api';
 import { notify } from '@/lib/utils/noti';

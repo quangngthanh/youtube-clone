@@ -4,7 +4,32 @@ const nextConfig: NextConfig = {
     trailingSlash: false,
     reactStrictMode: false,
     images: {
-        domains: ['picsum.photos', 'i.ytimg.com', 'i.pravatar.cc', 'localhost', 'lh3.googleusercontent.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'picsum.photos',
+            },
+            {
+                protocol: 'https',
+                hostname: 'i.ytimg.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'i.pravatar.cc',
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'admin.codelungtung.click',
+            },
+            {
+                protocol: 'https',
+                hostname: 'localhost',
+            },
+        ],
     }
 };
 

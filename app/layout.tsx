@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 }
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
-    title: "YouTube Clone",
+    title: "YouTube Clackend",
     description: "Next.js 15 + Tailwind + Shadcn",
 };
 

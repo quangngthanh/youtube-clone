@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PATH } from '@/lib/constants/paths';
 
 const protectedRoutes = Object.values(PATH.ME).filter((v): v is string => typeof v === 'string');
-console.log('protectedRoutes', protectedRoutes);
 const guestOnlyRoutes = ['/login', '/register'];
 
 function match(path: string, routes: string[]) {
@@ -14,6 +13,7 @@ export function middleware(request: NextRequest) {
     const accessToken = request.cookies.get('access_token')?.value;
     const path = request.nextUrl.pathname;
 
+    console.log('[middleware] accessToken', accessToken);
     if (match(path, guestOnlyRoutes) && accessToken) {
         return NextResponse.redirect(new URL('/dashboard', request.url));
     }

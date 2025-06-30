@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import VideoList from '@/components/video/list-video';
+import VideoList from '@/components/video/VideoList';
 import type { VideoResponse } from '@/types/video';
 import { useVideoSearch } from '@/lib/hooks/useVideoSearch';
 

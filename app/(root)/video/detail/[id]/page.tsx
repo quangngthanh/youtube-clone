@@ -1,12 +1,8 @@
-// app/(root)/video/[id]/page.tsx
-
 import type { Metadata } from 'next';
 import VideoClient from './VideoClient';
 import { getVideoDetail } from '@/features/videos/get-video-detail';
 import CommentSection from './CommentSection';
-import { VideoDetail } from '@/types/video';
-import type { VideoResponse } from '@/types/video';
-import { RelatedVideoList } from '@/components/video/list-video';
+import RelatedVideoList from '@/components/video/RelatedVideoList';
 import { getRelatedVideos } from '@/features/videos/get-related-videos';
 
 type Props = {

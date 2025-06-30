@@ -7,6 +7,7 @@ import { PATH } from "@/lib/constants/paths";
 import Link from "next/link";
 import { useTheme } from "@/lib/context/ThemeContext";
 import { useVideoSearch } from "@/lib/hooks/useVideoSearch";
+import YouTube from '@/lib/svg/Youtube';
 
 export function Header({ toggleSidebar }: { toggleSidebar?: () => void }) {
     const { isDark, toggleTheme } = useTheme();
@@ -20,7 +21,6 @@ export function Header({ toggleSidebar }: { toggleSidebar?: () => void }) {
 
     return (
         <header className="flex items-center justify-between px-4 py-3 border-b border-border bg-background">
-            {/* Mobile: menu icon */}
             <button
                 className="md:hidden text-gray-800"
                 onClick={toggleSidebar}
@@ -28,14 +28,14 @@ export function Header({ toggleSidebar }: { toggleSidebar?: () => void }) {
                 <Menu className="w-6 h-6" />
             </button>
 
-            {/* Logo */}
-            <div className="flex items-center gap-2 mx-auto md:mx-0 text-primary dark:text-white">
-                <Link href={PATH.HOME}>
-                    <span className="text-lg font-semibold">Youtube Clone</span>
+            {/* mobile */}
+            <div className="flex items-center gap-2 mx-auto md:mx-0 text-primary dark:text-white lg:hidden">
+                <Link href={PATH.HOME} className="flex items-center gap-2">
+                    <YouTube className="text-red-600 w-8 h-8" />
+                    <span className="text-lg font-semibold text-black">YouTube</span>
                 </Link>
             </div>
 
-            {/* Search form: hidden on mobile */}
             <form onSubmit={handleSubmit} className="hidden md:flex w-full max-w-xl mx-6">
                 <div className="flex flex-1 border border-input bg-background rounded-full overflow-hidden dark:border-primary-foreground">
                     <input
@@ -55,9 +55,7 @@ export function Header({ toggleSidebar }: { toggleSidebar?: () => void }) {
                 </div>
             </form>
 
-            {/* User avatar & dark mode toggle */}
             <div className="flex items-center gap-2 md:ml-0">
-                {/* Nút chuyển dark/light */}
                 <button
                     onClick={toggleTheme}
                     className="p-2 rounded-full hover:bg-muted transition"

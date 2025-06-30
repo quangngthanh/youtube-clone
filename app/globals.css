@@ -44,105 +44,106 @@
 }
 
 :root {
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
-    --background: oklch(0.99 0.001 0);
-    /* trắng gần như tuyệt đối */
-    --foreground: oklch(0.12 0.01 260);
-    /* đen hơi lạnh */
+    --background: oklch(0.98 0.002 240);
+    /* trắng xanh nhẹ hiện đại */
+    --foreground: oklch(0.15 0.02 260);
+    /* đen xanh đậm */
 
-    --card: oklch(0.98 0.003 0);
-    /* trắng nhẹ ngả ấm */
-    --card-foreground: oklch(0.15 0.01 260);
+    --card: oklch(0.99 0.001 240);
+    /* trắng tinh khiết */
+    --card-foreground: oklch(0.12 0.02 260);
 
     --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.15 0.01 260);
+    --popover-foreground: oklch(0.12 0.02 260);
 
-    --primary: oklch(0.6 0.25 27);
-    /* đỏ YouTube */
+    --primary: oklch(0.55 0.18 250);
+    /* xanh dương hiện đại */
     --primary-foreground: oklch(1 0 0);
-    /* trắng nổi bật */
+    /* trắng tương phản */
 
-    --secondary: oklch(0.92 0.01 240);
-    /* xám xanh sáng */
-    --secondary-foreground: oklch(0.2 0.02 260);
+    --secondary: oklch(0.94 0.008 240);
+    /* xám xanh nhạt */
+    --secondary-foreground: oklch(0.25 0.02 260);
 
-    --muted: oklch(0.9 0.008 250);
-    --muted-foreground: oklch(0.5 0.03 250);
+    --muted: oklch(0.92 0.005 240);
+    --muted-foreground: oklch(0.45 0.02 260);
 
-    --accent: oklch(0.6 0.25 27);
-    /* dùng cùng primary */
+    --accent: oklch(0.6 0.12 280);
+    /* tím nhạt hiện đại */
     --accent-foreground: oklch(1 0 0);
 
-    --destructive: oklch(0.6 0.2 25);
+    --destructive: oklch(0.65 0.2 25);
+    /* đỏ cam mạnh */
 
-    --border: oklch(0.88 0.005 240);
-    --input: oklch(0.88 0.005 240);
-    --ring: oklch(0.6 0.08 30);
-    /* đỏ nhạt */
-    --chart-1: oklch(0.646 0.222 41.116);
-    --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.984 0.003 247.858);
-    --sidebar-foreground: oklch(0.129 0.042 264.695);
-    --sidebar-primary: oklch(0.208 0.042 265.755);
-    --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-accent: oklch(0.968 0.007 247.896);
-    --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-    --sidebar-border: oklch(0.929 0.013 255.508);
-    --sidebar-ring: oklch(0.704 0.04 256.788);
+    --border: oklch(0.9 0.005 240);
+    --input: oklch(0.9 0.005 240);
+    --ring: oklch(0.55 0.15 250);
+    /* xanh dương nhạt */
+    --chart-1: oklch(0.6 0.15 250);
+    --chart-2: oklch(0.65 0.12 280);
+    --chart-3: oklch(0.55 0.18 200);
+    --chart-4: oklch(0.7 0.1 320);
+    --chart-5: oklch(0.6 0.15 180);
+    --sidebar: oklch(0.96 0.005 240);
+    --sidebar-foreground: oklch(0.2 0.02 260);
+    --sidebar-primary: oklch(0.55 0.18 250);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.94 0.008 240);
+    --sidebar-accent-foreground: oklch(0.25 0.02 260);
+    --sidebar-border: oklch(0.88 0.01 240);
+    --sidebar-ring: oklch(0.55 0.15 250);
 }
 
 .dark {
-    --background: oklch(0.12 0.01 260);
-    /* đen xám lạnh */
-    --foreground: oklch(0.98 0.001 0);
-    /* trắng hơi vàng nhẹ */
+    --background: oklch(0.08 0.02 260);
+    /* đen xanh đậm */
+    --foreground: oklch(0.95 0.002 240);
+    /* trắng xanh nhẹ */
 
-    --card: oklch(0.16 0.01 260);
-    /* xám đậm */
-    --card-foreground: oklch(0.98 0.001 0);
+    --card: oklch(0.12 0.02 260);
+    /* xám xanh đậm */
+    --card-foreground: oklch(0.95 0.002 240);
 
-    --popover: oklch(0.18 0.01 260);
+    --popover: oklch(0.15 0.02 260);
     --popover-foreground: oklch(1 0 0);
 
-    --primary: oklch(0.65 0.25 27);
-    /* đỏ tươi nổi bật */
+    --primary: oklch(0.65 0.2 250);
+    /* xanh dương sáng */
     --primary-foreground: oklch(1 0 0);
     /* trắng */
 
-    --secondary: oklch(0.28 0.01 260);
-    /* xám tím đậm */
-    --secondary-foreground: oklch(0.98 0.001 0);
+    --secondary: oklch(0.2 0.02 260);
+    /* xám xanh đậm */
+    --secondary-foreground: oklch(0.9 0.002 240);
 
-    --muted: oklch(0.28 0.01 260);
-    --muted-foreground: oklch(0.7 0.03 260);
+    --muted: oklch(0.18 0.02 260);
+    --muted-foreground: oklch(0.65 0.02 260);
 
-    --accent: oklch(0.65 0.25 27);
-    /* đỏ nút nổi */
+    --accent: oklch(0.7 0.15 280);
+    /* tím sáng */
     --accent-foreground: oklch(1 0 0);
 
-    --destructive: oklch(0.6 0.2 15);
-    /* đỏ cam mạnh */
+    --destructive: oklch(0.7 0.25 25);
+    /* đỏ cam sáng */
 
-    --border: oklch(0.25 0.01 260 / 40%);
-    --input: oklch(0.25 0.01 260 / 40%);
-    --ring: oklch(0.65 0.12 30);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.208 0.042 265.755);
-    --sidebar-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-accent: oklch(0.279 0.041 260.031);
-    --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.551 0.027 264.364);
+    --border: oklch(0.25 0.02 260 / 50%);
+    --input: oklch(0.25 0.02 260 / 50%);
+    --ring: oklch(0.65 0.2 250);
+    --chart-1: oklch(0.65 0.2 250);
+    --chart-2: oklch(0.7 0.15 280);
+    --chart-3: oklch(0.6 0.2 200);
+    --chart-4: oklch(0.75 0.12 320);
+    --chart-5: oklch(0.65 0.18 180);
+    --sidebar: oklch(0.15 0.02 260);
+    --sidebar-foreground: oklch(0.9 0.002 240);
+    --sidebar-primary: oklch(0.65 0.2 250);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.22 0.02 260);
+    --sidebar-accent-foreground: oklch(0.9 0.002 240);
+    --sidebar-border: oklch(0.3 0.02 260 / 30%);
+    --sidebar-ring: oklch(0.65 0.2 250);
 }
 
 @layer base {

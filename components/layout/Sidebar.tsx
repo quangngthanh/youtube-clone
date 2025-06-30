@@ -5,12 +5,12 @@ import {
     Video,
     ListVideo,
     ThumbsUp,
-    Youtube,
     X
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 import SidebarSearch from "./SidebarSearch";
+import YouTube from "@/lib/svg/Youtube";
 
 export function Sidebar({
     isOpen = false,
@@ -43,7 +43,7 @@ export function Sidebar({
 
             <div className="font-semibold text-lg flex items-center gap-2">
                 <Link href={PATH.HOME} className="flex items-center gap-2">
-                    <Youtube className="text-red-600" />
+                    <YouTube className="text-red-600" />
                     <span>YouTube</span>
                 </Link>
             </div>
