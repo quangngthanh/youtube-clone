@@ -25,10 +25,8 @@ export function UserMenu() {
         if (error) {
             console.error("Error logging out:", error);
         } else {
-            // Xóa localStorage/cookies thủ công
             localStorage.removeItem('access_token');
             localStorage.removeItem('user_info');
-            // Nếu dùng Cookies lib:
             document.cookie = 'access_token=; Max-Age=0; path=/;';
             document.cookie = 'user_info=; Max-Age=0; path=/;';
             clearUser();
@@ -36,33 +34,26 @@ export function UserMenu() {
         }
     };
 
-    if (!user) {
-        return (
-            <Link href={PATH.LOGIN}>
-                <Avatar className="cursor-pointer">
-                    <AvatarFallback>?</AvatarFallback>
-                </Avatar>
-            </Link>
-        );
-    }
-    const avatarUrl = getFullPath(user.avatar || '');
+
+    const avatarUrl = getFullPath(user?.avatar || '');
     let fallback = '?';
-    if (user.fullname && user.fullname.trim().length > 0) {
-        fallback = getInitialsFromName(user.fullname);
-    } else if (user.email) {
-        fallback = user.email.substring(0, 2).toUpperCase();
+    if (user?.fullname && user?.fullname.trim().length > 0) {
+        fallback = getInitialsFromName(user?.fullname);
+    } else if (user?.email) {
+        fallback = user?.email.substring(0, 2).toUpperCase();
     }
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
                 <Avatar className="cursor-pointer">
-                    <AvatarImage src={avatarUrl} alt={user.fullname || user.email} />
+                    <AvatarImage src={avatarUrl} alt={user?.fullname || user?.email || 'User'} />
                     <AvatarFallback>{fallback}</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <div className="px-2 py-1 text-sm font-medium text-muted-foreground">
-                    {user.fullname || user.email}
+                    {user?.fullname || user?.email || 'User'}
                 </div>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild className="cursor-pointer hover:text-white">

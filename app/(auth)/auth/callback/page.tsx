@@ -55,8 +55,6 @@ export default function AuthCallback() {
     };
 
     useEffect(() => {
-        console.log('vao callback');
-
         handleOAuthRedirect();
     }, []);
 

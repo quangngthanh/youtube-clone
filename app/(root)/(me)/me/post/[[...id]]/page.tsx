@@ -10,6 +10,8 @@ import { TagInput } from "@/components/ui/tag-input";
 import Image from "next/image";
 import SubmitBtn from "@/components/atom/SubmitBtn";
 import { uploadVideoAction } from "@/lib/actions/uploadVideo";
+import { useFileUpload } from '@/lib/hooks/useFileUpload';
+import { useVideoUpload } from '@/lib/hooks/useVideoUpload';
 
 const defaultValues: VideoForm = {
   title: '',
@@ -21,10 +23,8 @@ const defaultValues: VideoForm = {
 };
 
 export default function UploadVideoClient() {
-  const [imagePreview, setImagePreview] = useState<string>("");
-  const [videoPreview, setVideoPreview] = useState<string>("");
   const [serverError, setServerError] = useState<string>("");
-  const { register, handleSubmit, setValue, getValues, control, formState: { errors, isSubmitting } } = useForm<VideoForm>({
+  const { register, handleSubmit, setValue, control, formState: { errors, isSubmitting } } = useForm<VideoForm>({
     resolver: zodResolver(videoSchema),
     defaultValues,
   });
@@ -35,20 +35,25 @@ export default function UploadVideoClient() {
     setValue('tags', tags, { shouldValidate: true });
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImagePreview(URL.createObjectURL(file));
-      setValue('image', file.name);
-    }
-  };
-  const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setVideoPreview(URL.createObjectURL(file));
-      setValue('path', file.name);
-    }
-  };
+  // Upload image
+  const {
+    handleFileUpload: handleImageUpload,
+    loading: imageUploading,
+    preview: imagePreview,
+    setPreview: setImagePreview
+  } = useFileUpload({
+    fileType: 'image',
+    onSuccess: (path) => setValue('image', path, { shouldValidate: true })
+  });
+
+  // Upload video
+  const {
+    handleVideoUpload,
+    loading: videoUploading,
+    uploadId
+  } = useVideoUpload({
+    onSuccess: (path) => setValue('path', path, { shouldValidate: true })
+  });
 
   const onSubmit = async (data: VideoForm) => {
     setServerError("");
@@ -60,6 +65,8 @@ export default function UploadVideoClient() {
       setServerError(res.message || 'Có lỗi xảy ra');
     }
   };
+
+  const loading = imageUploading || videoUploading;
 
   return (
     <div className="max-w-2xl mx-auto p-6">
@@ -91,7 +98,7 @@ export default function UploadVideoClient() {
             <div className="space-y-2">
               <Label htmlFor="imageFile">Ảnh thumbnail</Label>
               <div className="flex gap-2 items-center">
-                <Input id="imageFile" type="file" accept="image/*" onChange={handleImageChange} required />
+                <Input id="imageFile" type="file" accept="image/*" onChange={handleImageUpload}  />
                 {imagePreview && (
                   <div className="relative h-20 w-20">
                     <Image fill src={imagePreview} alt="Preview" className="object-cover rounded-md" />
@@ -104,10 +111,7 @@ export default function UploadVideoClient() {
             <div className="space-y-2">
               <Label htmlFor="videoFile">Video</Label>
               <div className="flex gap-2 items-center">
-                <Input id="videoFile" type="file" accept="video/*" onChange={handleVideoChange} required />
-                {videoPreview && (
-                  <video src={videoPreview} controls className="h-20 w-32 rounded-md" />
-                )}
+                <Input id="videoFile" type="file" accept="video/*" onChange={handleVideoUpload}  />
               </div>
               {errors.path && <p className="text-red-500 text-xs">{errors.path.message}</p>}
             </div>
@@ -116,18 +120,26 @@ export default function UploadVideoClient() {
               <Label>Trạng thái</Label>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" value="true" defaultChecked {...register('isActive')} />
+                  <input
+                    type="radio"
+                    checked={useWatch({ control, name: 'isActive' }) === true}
+                    onChange={() => setValue('isActive', true, { shouldValidate: true })}
+                  />
                   <span>Public</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" value="false" {...register('isActive')} />
+                  <input
+                    type="radio"
+                    checked={useWatch({ control, name: 'isActive' }) === false}
+                    onChange={() => setValue('isActive', false, { shouldValidate: true })}
+                  />
                   <span>Private</span>
                 </label>
               </div>
               {errors.isActive && <p className="text-red-500 text-xs">{errors.isActive.message}</p>}
             </div>
             <div className="space-y-2 text-center">
-              <SubmitBtn text="Đăng video" />
+              <SubmitBtn text="Đăng video" loading={loading} />
             </div>
             {serverError && <p className="text-red-500 text-center mt-2">{serverError}</p>}
           </form>

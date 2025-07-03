@@ -16,13 +16,12 @@ export const useUserStore = create<UserState>()(
       clearUser: () => set({ user: null }),
     }),
     {
-      name: 'user-storage', // Tên key trong localStorage
+      name: 'user_info', // Tên key trong localStorage
       storage: createJSONStorage(() => localStorage), // Chỉ định localStorage
     }
   )
 );
 
-// Optional: Một hook để kiểm tra xem người dùng có được xác thực không
 export const useIsAuthenticated = () => {
     const user = useUserStore((state) => state.user);
     return user !== null;

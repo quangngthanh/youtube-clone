@@ -7,7 +7,6 @@ import { useUserStore } from '@/lib/stores/user-store';
 
 export function LoginButton() {
     const setUser = useUserStore((state) => state.setUser);
-
     const handleLogin = async () => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
@@ -19,6 +18,7 @@ export function LoginButton() {
             console.error("OAuth login error:", error.message);
         } else {
             const { data } = await supabase.auth.getUser();
+            console.log(data);
             if (data?.user) {
                 setUser({
                     email: data.user.email || '',

@@ -33,16 +33,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-// ✅ Server component – truyền `id` sang client
 export default async function Page({ params }: Props) {
     const { id } = await params;
 
-    // ✅ Sửa lỗi: Fetch tuần tự vì có sự phụ thuộc
-    // 1. Lấy chi tiết video trước
     const video = await getVideoDetail(id);
+    console.log(video);
     const isValid = video && !('error' in video);
 
-    // 2. Sau đó mới dùng tags của video để lấy video liên quan
     const relatedVideosResult = isValid ? await getRelatedVideos(video.tags, id) : null;
     const relatedVideos = relatedVideosResult || [];
 
